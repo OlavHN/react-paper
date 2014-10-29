@@ -112,9 +112,10 @@ var Slider = React.createClass({
   },
 
   render: function() {
-    var min = this.props.min;
-    var max = this.props.max;
+    var min = this.props.min || 0;
+    var max = this.props.max || 100;
     var value = Math.min(Math.max(min, this.props.value), max);
+    var progress = 100 * value / (max - min);
 
     var containerClass = React.addons.classSet({
       'slider-container': true,
@@ -125,9 +126,9 @@ var Slider = React.createClass({
     return (
       <div className={containerClass}>
         <div ref="barContainer" onClick={this.handleBarClick} className="bar-container">
-          <Progress max={max} value={value} />
+          <Progress min={min} max={max} value={value} />
         </div>
-        <div onMouseDown={this.expandKnob} style={{left: value + '%'}} className="slider-knob">
+        <div onMouseDown={this.expandKnob} style={{left: progress + '%'}} className="slider-knob">
           <div data-value={Math.round(value)} className="slider-knob-inner">
           </div>
         </div>
@@ -157,7 +158,7 @@ var Slider = React.createClass({
     var rect = this.refs.barContainer.getDOMNode().getBoundingClientRect();
     var progress = (max - min) * (evt.clientX - rect.left) / rect.width;
 
-    onChange(progress);
+    onChange(Math.round(progress));
   },
 
   handleMoveKnob: function(evt) {
