@@ -1,0 +1,27 @@
+{
+  "name": "react-paper",
+  "version": "0.0.0",
+  "description": "React UI components inspired by Google Material Design",
+  "main": "index.js",
+  "peerDependencies": {
+    "react": ">=0.9"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OlavHN/react-paper"
+  },
+  "keywords": [
+    "react-component",
+    "react",
+    "UI",
+    "paper",
+    "paper-elements",
+    "material"
+  ],
+  "author": "Olav Nymoen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/OlavHN/react-paper/issues"
+  },
+  "homepage": "https://github.com/OlavHN/react-paper"
+}
