@@ -1,6 +1,6 @@
 {
   "name": "react-paper",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "React UI components inspired by Google Material Design",
   "main": "index.js",
   "peerDependencies": {
