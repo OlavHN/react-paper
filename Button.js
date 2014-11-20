@@ -51,9 +51,9 @@ var Button = React.createClass({displayName: 'Button',
     });
 
     return this.transferPropsTo(
-      React.DOM.div( {ref:"button", className:buttonClass, style:buttonStyle}, 
-        Ripple( {elem:this.refs.button} ),
-        raised ? Shadow(null ) : null,
+      React.createElement("div", {ref: "button", className: buttonClass, style: buttonStyle}, 
+        React.createElement(Ripple, {elem: this.refs.button}), 
+        raised ? React.createElement(Shadow, null) : null, 
         this.props.children
       )
     );

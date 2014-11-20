@@ -32,10 +32,10 @@ var Progress = React.createClass({displayName: 'Progress',
     var secondary = this.props.secondValue;
     var max = this.props.max;
     return (
-      React.DOM.div( {className:"progress"}, 
-        React.DOM.div( {className:"progress-container"}, 
-          React.DOM.div( {style:{width: (100 * primary / max) + '%'}, className:"progress-bar primary"}),
-          React.DOM.div( {style:{width: (100 * secondary / max) + '%'}, className:"progress-bar secondary"})
+      React.createElement("div", {className: "progress"}, 
+        React.createElement("div", {className: "progress-container"}, 
+          React.createElement("div", {style: {width: (100 * primary / max) + '%'}, className: "progress-bar primary"}), 
+          React.createElement("div", {style: {width: (100 * secondary / max) + '%'}, className: "progress-bar secondary"})
         )
       )
     );

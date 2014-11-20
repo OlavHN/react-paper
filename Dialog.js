@@ -44,9 +44,9 @@ var Dialog = React.createClass({displayName: 'Dialog',
     });
 
     return (
-      React.DOM.div( {className:dialogClass}, 
-        Shadow(null ),
-        React.DOM.div( {className:"dialog-content"}, 
+      React.createElement("div", {className: dialogClass}, 
+        React.createElement(Shadow, null), 
+        React.createElement("div", {className: "dialog-content"}, 
           this.props.children
         )
       )

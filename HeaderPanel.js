@@ -50,13 +50,13 @@ var HeaderPanel = React.createClass({displayName: 'HeaderPanel',
     var header = this.props.children[0];
     var contents = this.props.children.slice(1);
     return (
-      React.DOM.div( {className:"panel"}, 
-        header,
-        React.DOM.div( {className:"content-panel"}, 
-          React.DOM.div( {className:"content-container"}, 
+      React.createElement("div", {className: "panel"}, 
+        header, 
+        React.createElement("div", {className: "content-panel"}, 
+          React.createElement("div", {className: "content-container"}, 
             contents
-          ),
-          React.DOM.div( {className:"panel-shadow"})
+          ), 
+          React.createElement("div", {className: "panel-shadow"})
         )
       )
     );

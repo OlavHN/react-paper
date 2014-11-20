@@ -21,7 +21,7 @@ require('./css')('\
 
 var Header = React.createClass({displayName: 'Header',
   render: function() {
-    return React.DOM.div( {className:"header"}, this.props.children)
+    return React.createElement("div", {className: "header"}, this.props.children)
   },
 });
 

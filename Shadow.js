@@ -26,8 +26,8 @@ require('./css')('\
 var Shadow = React.createClass({displayName: 'Shadow',
   render: function() {
     return (
-      React.DOM.div( {className:"shadow"}, 
-        React.DOM.div( {className:"shadow shadow-bottom"})
+      React.createElement("div", {className: "shadow"}, 
+        React.createElement("div", {className: "shadow shadow-bottom"})
       )
     );
   },

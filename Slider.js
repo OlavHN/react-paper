@@ -124,12 +124,12 @@ var Slider = React.createClass({displayName: 'Slider',
     });
 
     return (
-      React.DOM.div( {className:containerClass}, 
-        React.DOM.div( {ref:"barContainer", onClick:this.handleBarClick, className:"bar-container"}, 
-          Progress( {min:min, max:max, value:value} )
-        ),
-        React.DOM.div( {onMouseDown:this.expandKnob, style:{left: progress + '%'}, className:"slider-knob"}, 
-          React.DOM.div( {'data-value':Math.round(value), className:"slider-knob-inner"}
+      React.createElement("div", {className: containerClass}, 
+        React.createElement("div", {ref: "barContainer", onClick: this.handleBarClick, className: "bar-container"}, 
+          React.createElement(Progress, {min: min, max: max, value: value})
+        ), 
+        React.createElement("div", {onMouseDown: this.expandKnob, style: {left: progress + '%'}, className: "slider-knob"}, 
+          React.createElement("div", {'data-value': Math.round(value), className: "slider-knob-inner"}
           )
         )
       )
@@ -145,6 +145,8 @@ var Slider = React.createClass({displayName: 'Slider',
     var moveHandler = this.handleMoveKnob;
     document.addEventListener('mousemove', moveHandler);
     document.addEventListener('mouseup', function upHandler() {
+      if (reactScope.props.onDone)
+        reactScope.props.onDone(reactScope.props.value);
       reactScope.setState({expand: false});
       document.removeEventListener('mouseup', upHandler);
       document.removeEventListener('mousemove', moveHandler);
@@ -175,6 +177,8 @@ var Slider = React.createClass({displayName: 'Slider',
     });
 
     this.moveKnob(evt);
+    if (this.props.onDone)
+      this.props.onDone(this.props.value);
   }
 });
 

@@ -98,12 +98,12 @@ var Switch = React.createClass({displayName: 'Switch',
     });
 
     return (
-      React.DOM.div( {className:"toggle-container", onClick:this.handleClick}, 
-        React.DOM.div( {className:toggleBar}),
-        React.DOM.div( {className:toggleRadio}, 
-          React.DOM.div( {className:"radio-container"}, 
-            React.DOM.div( {className:"off-radio"}),
-            React.DOM.div( {className:onRadio})
+      React.createElement("div", {className: "toggle-container", onClick: this.handleClick}, 
+        React.createElement("div", {className: toggleBar}), 
+        React.createElement("div", {className: toggleRadio}, 
+          React.createElement("div", {className: "radio-container"}, 
+            React.createElement("div", {className: "off-radio"}), 
+            React.createElement("div", {className: onRadio})
           )
         )
       )

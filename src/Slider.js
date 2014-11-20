@@ -145,6 +145,8 @@ var Slider = React.createClass({
     var moveHandler = this.handleMoveKnob;
     document.addEventListener('mousemove', moveHandler);
     document.addEventListener('mouseup', function upHandler() {
+      if (reactScope.props.onDone)
+        reactScope.props.onDone(reactScope.props.value);
       reactScope.setState({expand: false});
       document.removeEventListener('mouseup', upHandler);
       document.removeEventListener('mousemove', moveHandler);
@@ -175,6 +177,8 @@ var Slider = React.createClass({
     });
 
     this.moveKnob(evt);
+    if (this.props.onDone)
+      this.props.onDone(this.props.value);
   }
 });
 
