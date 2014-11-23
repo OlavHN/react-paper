@@ -1,39 +1,5 @@
 var React = require('react/addons');
 
-require('./css')('\
-  .ripple {\
-    display: block;\
-    border-radius: inherit;\
-    overflow: hidden;\
-    position: absolute;\
-    top: 0;\
-    left: 0;\
-    width: 100%;\
-    height: 100%;\
-  }\
-\
-  .bg, .waves, .wave-container, .wave {\
-    pointer-events: none;\
-    position: absolute;\
-    top: 0;\
-    left: 0;\
-    width: 100%;\
-    height: 100%;\
-  }\
-\
-  .bg, .wave {\
-    opacity: 0;\
-  }\
-\
-  .waves, .wave {\
-    overflow: hidden;\
-  }\
-\
-  .wave-container, .wave {\
-    border-radius: 50%;\
-  }\
-');
-
 var waveMaxRadius = 150;
 
 // Helper funcs
@@ -222,12 +188,9 @@ var Ripple = React.createClass({
     this.cancelled = true;
   },
 
-  componentDidMount: function() {
-  },
-
   render: function() {
     return (
-      <div onMouseDown={this.downAction} onMouseUp={this.upAction} onMouseLeave={this.upAction} className="ripple">
+      <div onMouseDown={this.downAction} onMouseUp={this.upAction} onMouseLeave={this.upAction} className="paper-ripple">
         <div className="bg" ref="bg"></div>
         <div className="waves" ref="waves"></div>
       </div>

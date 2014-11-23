@@ -2,77 +2,6 @@ var React = require('react/addons'),
     TransferDOMProperties = require('./TransferDOMProperties'),
     cx = React.addons.classSet;
 
-
-require('./css')('\
-.toggle-container {\
-  position: relative;\
-  width: 64px;\
-  height: 16px;\
-}\
-\
-.toggle-bar {\
-  position: absolute;\
-  top: 8px;\
-  left: 16px;\
-  height: 1px;\
-  width: 32px;\
-  background-color: #424A52;\
-  pointer-events: none;\
-}\
-\
-.toggle-bar.checked {\
-  background-color: #7D8F29;\
-}\
-\
-.toggle-radio {\
-  position: absolute;\
-  left: 0;\
-  padding: 8px 48px 8px 0;\
-  margin: -8px 48px -8px 0;\
-  transition: transform linear 0.08s;\
-}\
-\
-.toggle-radio.checked {\
-  transform: translate(48px, 0);\
-  padding: 8px 0 8px 48px;\
-  margin: -8px 0 -8px -48px;\
-}\
-\
-.radio-container {\
-  position: relative;\
-  width: 16px;\
-  height: 16px;\
-  cursor: pointer;\
-}\
-\
-.off-radio {\
-  position: absolute;\
-  top: 0;\
-  left: 0;\
-  width: 12px;\
-  height: 12px;\
-  border-radius: 50%;\
-  border: solid 2px;\
-  border-color: #424A52;\
-}\
-\
-.on-radio {\
-  position: absolute;\
-  top: 0;\
-  left: 0;\
-  width: 16px;\
-  height: 16px;\
-  border-radius: 50%;\
-  background-color: #7D8F29;\
-  transform: scale(0);\
-  transition: transform ease 0.28s;\
-}\
-\
-.on-radio.fill {\
-  transform: scale(1.1);\
-}\
-');
-
 var Switch = React.createClass({displayName: 'Switch',
   mixins: [TransferDOMProperties],
   getInitialState: function() {
@@ -103,7 +32,7 @@ var Switch = React.createClass({displayName: 'Switch',
     return (
       React.createElement("div", React.__spread({},  
           this.props, 
-          {className: this.mergeClassNames("toggle-container"), 
+          {className: this.mergeClassNames("papertoggle-container"), 
           style: this.mergeStyle(), 
           onClick: this.handleClick
       }), 

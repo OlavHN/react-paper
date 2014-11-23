@@ -4,32 +4,6 @@ var React = require('react/addons'),
     Ripple = require('./Ripple');
     cx = React.addons.classSet;
 
-require('./css')('\
-.button {\
-  color: black;\
-  margin: 0 0.29em;\
-  padding: 0.7em 0.57em;\
-  min-width: 5.14em;\
-  box-sizing: border-box;\
-  display: inline-block;\
-  position: relative;\
-  border: 0;\
-  background: transparent;\
-  text-align: center;\
-  font: inherit;\
-  text-transform: uppercase;\
-  outline: none;\
-  border-radius: 3px;\
-  -webkit-user-select: none;\
-  user-select: none;\
-  cursor: pointer;\
-}\
-\
-.button.hover:hover {\
-  opacity: 0.75;\
-}\
-');
-
 var Button = React.createClass({
   mixins: [TransferDOMProperties],
   componentDidMount: function() {
@@ -38,7 +12,7 @@ var Button = React.createClass({
   },
   getButtonClasses: function() {
     var buttonClass = cx({
-      button: true,
+      'paper-button': true,
       hover: this.props.hover
     });
     return buttonClass;

@@ -6,8 +6,6 @@ var TransferDOMProperties = {
 	},
 	mergeStyle: function(style) {
 		return React.__spread({}, this.props.style, style);
-
-		
 	}
 }
 
