@@ -1,0 +1,24 @@
+
+.paper-progress {
+	.progress-container {
+	  height: 4px;
+	  position: relative;
+	  background-color: #D9D6D1;
+	}
+
+	.paper-progress-bar {
+	  position: absolute;
+	  top: 0;
+	  left: 0;
+	  bottom: 0;
+
+		&.primary {
+		background-color: #7D8F29;
+		}
+
+		&.secondary {
+		background-color: #424A52;
+		}
+	}
+}
+

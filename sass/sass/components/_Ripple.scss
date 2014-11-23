@@ -1,0 +1,31 @@
+.paper-ripple {
+  display: block;
+  border-radius: inherit;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  .bg, .waves, .wave-container, .wave {
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .bg, .wave {
+    opacity: 0;
+  }
+
+  .waves, .wave {
+    overflow: hidden;
+  }
+
+  .wave-container, .wave {
+    border-radius: 50%;
+  }
+}

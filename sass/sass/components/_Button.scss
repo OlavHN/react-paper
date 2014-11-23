@@ -1,0 +1,24 @@
+.paper-button {
+  color: black;
+  margin: 0 0.29em;
+  padding: 0.7em 0.57em;
+  min-width: 5.14em;
+  box-sizing: border-box;
+  display: inline-block;
+  position: relative;
+  border: 0;
+  background: transparent;
+  text-align: center;
+  font: inherit;
+  text-transform: uppercase;
+  outline: none;
+  border-radius: 3px;
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: pointer;
+
+  &.hover:hover {
+    opacity: 0.75;
+  }
+}
+
