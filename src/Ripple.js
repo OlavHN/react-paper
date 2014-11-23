@@ -364,7 +364,6 @@ var Ripple = React.createClass({
       // clear the background color
       this.refs.bg.getDOMNode().style.backgroundColor = null;
       this._loop = null;
-      console.log('core-transitionend');
     }
   }
 });

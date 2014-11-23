@@ -1,5 +1,8 @@
 /** @jsx React.DOM */
-var React = require('react/addons');
+var React = require('react/addons'),
+    TransferDOMProperties = require('./TransferDOMProperties'),
+    cx = React.addons.classSet;
+
 
 require('./css')('\
 .toggle-container {\
@@ -72,45 +75,52 @@ require('./css')('\
 ');
 
 var Switch = React.createClass({
+  mixins: [TransferDOMProperties],
   getInitialState: function() {
     return {
       checked: false
     };
   },
 
-  render: function() {
-    var checked = this.state.checked;
-
-    var cx = React.addons.classSet;
-    var toggleBar = cx({
+  getToggleBarStyle: function() {
+    return cx({
       'toggle-bar': true,
-      checked: checked
+      checked: this.state.checked
     });
-
-    var toggleRadio = cx({
+  },
+  getToggleRadioStyle: function() {
+    return cx({
       'toggle-radio': true,
-      checked: checked
+      checked: this.state.checked
     });
-
-    var onRadio = cx({
+  },
+  getRadioStyle: function() {
+    return cx({
       'on-radio': true,
-      fill: checked
+      fill: this.state.checked
     });
-
+  },
+  render: function() {
     return (
-      <div className="toggle-container" onClick={this.handleClick}>
-        <div className={toggleBar}></div>
-        <div className={toggleRadio}>
+      <div 
+          {...this.props}
+          className={this.mergeClassNames("toggle-container")} 
+          style={this.mergeStyle()}
+          onClick={this.handleClick}
+      >
+        <div className={this.getToggleBarStyle()}></div>
+        <div className={this.getToggleRadioStyle()}>
           <div className="radio-container">
             <div className="off-radio"></div>
-            <div className={onRadio}></div>
+            <div className={this.getRadioStyle()}></div>
           </div>
         </div>
       </div>
     );
   },
 
-  handleClick: function() {
+  handleClick: function(e) {
+    this.props.onClick && this.props.onClick(e);
     this.setState({checked: !this.state.checked});
   }
 });

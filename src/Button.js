@@ -1,6 +1,7 @@
 /** @jsx React.DOM */
 
-var React = require('react/addons');
+var React = require('react/addons'),
+    TransferDOMProperties = require('./TransferDOMProperties');
 
 var Shadow = require('./Shadow');
 var Ripple = require('./Ripple');
@@ -32,28 +33,40 @@ require('./css')('\
 ');
 
 var Button = React.createClass({
+  mixins: [TransferDOMProperties],
   componentDidMount: function() {
     // We don't have a ref for the Ripple at initial render
     this.forceUpdate()
   },
-
-  render: function() {
-    var raised = this.props.raised;
-    var buttonStyle = {};
-    if (this.props.background)
-      buttonStyle.backgroundColor = this.props.background;
-    if (this.props.color)
-      buttonStyle.color = this.props.color;
-
+  getButtonClasses: function() {
     var buttonClass = React.addons.classSet({
       button: true,
       hover: this.props.hover
     });
+    return buttonClass;
+  },
+  getButtonStyle: function() {
+    var buttonStyle = {};
+    if (this.props.background) {
+      buttonStyle.backgroundColor = this.props.background;
+    }
+    if (this.props.color){
+      buttonStyle.color = this.props.color;
+    }
+    return buttonStyle;
+  }
 
-    return this.transferPropsTo(
-      <div ref="button" className={buttonClass} style={buttonStyle}>
+  render: function() {
+    //Ripple should never access a ref. Probably should just get itself then get parent element
+    return (
+      <div 
+          {...this.props}
+          ref="button" 
+          className={this.mergeClassNames(this.getButtonClasses())} 
+          style={this.mergeStyle(this.getButtonStyle())}
+      >
         <Ripple elem={this.refs.button} />
-        {raised ? <Shadow /> : null}
+        {this.props.raised ? <Shadow /> : null}
         {this.props.children}
       </div>
     );
