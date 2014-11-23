@@ -1,4 +1,3 @@
-/** @jsx React.DOM */
 var React = require('react/addons'),
     TransferDOMProperties = require('./TransferDOMProperties'),
     cx = React.addons.classSet;

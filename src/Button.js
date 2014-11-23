@@ -1,9 +1,8 @@
 var React = require('react/addons'),
     TransferDOMProperties = require('./TransferDOMProperties'),
+    Shadow = require('./Shadow');
+    Ripple = require('./Ripple');
     cx = React.addons.classSet;
-
-var Shadow = require('./Shadow');
-var Ripple = require('./Ripple');
 
 require('./css')('\
 .button {\
@@ -46,14 +45,19 @@ var Button = React.createClass({
   },
   getButtonStyle: function() {
     var buttonStyle = {};
+    
     if (this.props.background) {
       buttonStyle.backgroundColor = this.props.background;
     }
+
     if (this.props.color){
       buttonStyle.color = this.props.color;
     }
     return buttonStyle;
-  }
+  },
+  getShadow: function() {
+    return this.props.raised ? <Shadow /> : null;
+  },
 
   render: function() {
     //Ripple should never access a ref. Probably should just get itself then get parent element
@@ -65,7 +69,7 @@ var Button = React.createClass({
           style={this.mergeStyle(this.getButtonStyle())}
       >
         <Ripple elem={this.refs.button} />
-        {this.props.raised ? <Shadow /> : null}
+        {this.getShadow()}
         {this.props.children}
       </div>
     );

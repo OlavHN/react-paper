@@ -1,6 +1,5 @@
-/** @jsx React.DOM */
 var React = require('react/addons'),
-    TransferDOMProperties = require('./TransferDOMProperties'),
+    TransferDOMProperties = require('./TransferDOMProperties');
 
 
 require('./css')('\

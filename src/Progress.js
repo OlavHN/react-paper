@@ -1,5 +1,3 @@
-'use strict';
-
 var React = require('react'),
     TransferDOMProperties = require('./TransferDOMProperties');
 

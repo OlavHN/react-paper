@@ -1,5 +1,3 @@
-/** @jsx React.DOM */
-
 var React = require('react/addons'),
     Shadow = require('./Shadow'),
     TransferDOMProperties = require('./TransferDOMProperties'),
