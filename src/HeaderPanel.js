@@ -1,6 +1,8 @@
 /** @jsx React.DOM */
 
-var React = require('react');
+var React = require('react'),
+    TransferDOMProperties = require('./TransferDOMProperties');
+
 
 require('./css')('\
 .panel {\
@@ -45,12 +47,16 @@ require('./css')('\
 ');
 
 var HeaderPanel = React.createClass({
-
+  mixins: [TransferDOMProperties],
   render: function() {
     var header = this.props.children[0];
     var contents = this.props.children.slice(1);
     return (
-      <div className="panel">
+      <div 
+          {...this.props}
+          className={this.mergeClassNames("panel")}
+          style={this.mergeStyle()}
+      >
         {header}
         <div className="content-panel">
           <div className="content-container">

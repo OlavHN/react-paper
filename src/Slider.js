@@ -1,6 +1,8 @@
 /** @jsx React.DOM */
 var React = require('react/addons');
-var Progress = require('./Progress');
+var Progress = require('./Progress'),
+    TransferDOMProperties = require('./TransferDOMProperties'),
+    cx = React.addons.classSet;
 
 require('./css')('\
 .slider-container {\
@@ -104,11 +106,19 @@ require('./css')('\
 ');
 
 var Slider = React.createClass({
+  mixins: [TransferDOMProperties],
   getInitialState: function() {
     return {
       expand: false,
       transiting: false
     };
+  },
+  getContainerClass: function() {
+    return cx({
+      'slider-container': true,
+      transiting: this.state.transiting,
+      expand: this.state.expand
+    });
   },
 
   render: function() {
@@ -117,14 +127,12 @@ var Slider = React.createClass({
     var value = Math.min(Math.max(min, this.props.value), max);
     var progress = 100 * value / (max - min);
 
-    var containerClass = React.addons.classSet({
-      'slider-container': true,
-      transiting: this.state.transiting,
-      expand: this.state.expand
-    });
-
     return (
-      <div className={containerClass}>
+      <div 
+        {...this.props}
+        className={this.mergeClassNames(this.getContainerClass())}
+        style={this.mergeStyle()}
+      >
         <div ref="barContainer" onClick={this.handleBarClick} className="bar-container">
           <Progress min={min} max={max} value={value} />
         </div>
@@ -177,8 +185,9 @@ var Slider = React.createClass({
     });
 
     this.moveKnob(evt);
-    if (this.props.onDone)
+    if (this.props.onDone) {
       this.props.onDone(this.props.value);
+    }
   }
 });
 

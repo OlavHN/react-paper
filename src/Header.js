@@ -1,5 +1,7 @@
 /** @jsx React.DOM */
-var React = require('react/addons');
+var React = require('react/addons'),
+    TransferDOMProperties = require('./TransferDOMProperties'),
+
 
 require('./css')('\
 .header {\
@@ -20,8 +22,17 @@ require('./css')('\
 ');
 
 var Header = React.createClass({
+  mixins: [TransferDOMProperties],
   render: function() {
-    return <div className="header">{this.props.children}</div>
+    return (
+        <div 
+          {...this.props}
+          className={this.mergeClassNames("header")}
+          style={this.mergeStyle()}
+        >
+          {this.props.children}
+        </div>
+    )
   },
 });
 

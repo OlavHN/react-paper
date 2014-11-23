@@ -1,7 +1,6 @@
-/** @jsx React.DOM */
-
 var React = require('react/addons'),
-    TransferDOMProperties = require('./TransferDOMProperties');
+    TransferDOMProperties = require('./TransferDOMProperties'),
+    cx = React.addons.classSet;
 
 var Shadow = require('./Shadow');
 var Ripple = require('./Ripple');
@@ -39,7 +38,7 @@ var Button = React.createClass({
     this.forceUpdate()
   },
   getButtonClasses: function() {
-    var buttonClass = React.addons.classSet({
+    var buttonClass = cx({
       button: true,
       hover: this.props.hover
     });

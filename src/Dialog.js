@@ -1,7 +1,10 @@
 /** @jsx React.DOM */
 
-var React = require('react/addons');
-var Shadow = require('./Shadow');
+var React = require('react/addons'),
+    Shadow = require('./Shadow'),
+    TransferDOMProperties = require('./TransferDOMProperties'),
+    cx = React.addons.classSet;
+
 
 require('./css')('\
 .dialog {\
@@ -35,16 +38,26 @@ require('./css')('\
 ');
 
 var Dialog = React.createClass({
-  render: function() {
-    var open = this.props.open || false;
-
-    var dialogClass = React.addons.classSet({
+  mixins: [TransferDOMProperties],
+  getDefaultProps: function() {
+    return {
+      open: false
+    };
+  },
+  getDialogClass: function() {
+    return cx({
       dialog: true,
-      open: open
+      open: this.props.open
     });
+  },
+  render: function() {
 
     return (
-      <div className={dialogClass}>
+      <div 
+          {...this.props}
+          className={this.mergeClassNames(this.getDialogClass())}
+          style={this.mergeStyle()}
+      >
         <Shadow />
         <div className='dialog-content'>
           {this.props.children}
