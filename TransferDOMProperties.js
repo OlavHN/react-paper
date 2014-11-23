@@ -5,7 +5,9 @@ var TransferDOMProperties = {
 		return React.addons.classSet(this.props.className, className);
 	},
 	mergeStyle: function(style) {
-		return {...this.props.style, style}
+		return React.__spread({}, this.props.style, style);
+
+		
 	}
 }
 
